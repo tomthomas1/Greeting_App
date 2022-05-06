@@ -71,4 +71,14 @@ public class GreetingController {
         return iGreetingService.getAll();
     }
 
+    /** Method to edit the greeting message in the repo
+     *
+     * @param greeting - We will pass the greeting in Json format
+     * @return -  will edit and return the updated greeting message
+     * http://localhost:8081/greeting/edit
+     */
+    @PutMapping("/edit")
+    public Greeting updateGreeting(@RequestBody Greeting greeting) {
+        return iGreetingService.updateGreeting(greeting);
+    }
 }

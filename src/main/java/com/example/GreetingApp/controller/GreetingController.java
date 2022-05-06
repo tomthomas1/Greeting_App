@@ -75,10 +75,21 @@ public class GreetingController {
      *
      * @param greeting - We will pass the greeting in Json format
      * @return -  will edit and return the updated greeting message
-     * http://localhost:8081/greeting/edit
+     * URL : http://localhost:8081/greeting/edit
      */
     @PutMapping("/edit")
     public Greeting updateGreeting(@RequestBody Greeting greeting) {
         return iGreetingService.updateGreeting(greeting);
+    }
+
+    /**
+     *  Method to delete the greeting message
+     *  We have used the Delete annotation method to delete it.
+     * @param id - We are passing the id to delete the greeting
+     * URL : http://localhost:8081/greeting/delete?id=1
+     */
+    @DeleteMapping("/delete")
+    public void deleteByID(@RequestParam(name = "id") long id) {
+        iGreetingService.delete(id);
     }
 }

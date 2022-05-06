@@ -6,6 +6,9 @@ import com.example.GreetingApp.service.IGreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/greeting")
 public class GreetingController {
@@ -44,5 +47,28 @@ public class GreetingController {
         return iGreetingService.addGreeting(user);
     }
 
+    /**
+     *  Method to Get all the message in the repository
+     *
+     * @return- It will return the list of all the users in the repository
+     * URL : http://localhost:8081/greeting/all
+     */
+    @GetMapping("/all")
+    public List<Greeting> getAll() {
+        return iGreetingService.getAll();
+    }
+
+    /**
+     * Method to Get the Greeting message by ID in repository.
+     *
+     * @param id - We are passing the id a parameter.
+     * @return - It will return the user repo for the given Id.
+     *
+     * URL : http://localhost:8081/greeting/get?id=1
+     */
+    @GetMapping("/get")
+    public Greeting getGreetingById(@RequestParam(name = "id") long id){
+        return iGreetingService.getGreetingById(id);
+    }
 
 }

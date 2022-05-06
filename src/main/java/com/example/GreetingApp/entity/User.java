@@ -5,6 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
+// We have defined user here to create multiple users.
 public class User {
     public String firstName;
     public String lastName;
